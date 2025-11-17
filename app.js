@@ -42,3 +42,12 @@ Gasto en conservador: ${gastado_conservador.toFixed(2)} pesos
 
 Costo total: ${total} pesos`;
 }
+function limpiar() {
+    document.getElementById("costo_cerakilo").value = "";
+    document.getElementById("costo_esencia").value = "";
+    document.getElementById("costo_recipiente").value = "";
+    document.getElementById("costo_conservador").value = "";
+    document.getElementById("costos_extras").value = "";
+    document.getElementById("gr_cera").value = "";
+    document.getElementById("resultado").innerText = "";
+}
