@@ -2,16 +2,33 @@ body {
   font-family: sans-serif;
   text-align: center;
   padding: 20px;
-  background-color: rgb(192, 140, 76);
-}
-h1 {
-  color: rgb(25, 28, 197);
-  background-color: red;
+  background-color: rgb(223, 175, 116);
+  min-height: 100vh;
+  position: relative;      /* Necesario */
+  overflow: hidden;        /* Evita scroll raro */
 }
 
-.contenedor-logo {
-  width: 150px;
-  height: auto;
-  margin-top: 20px;
-  background-repeat: repeat; 
+/* Fondo con opacidad SIN afectar el texto */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("IMAGENES/logocolor.png");
+  background-size: 400px;
+  background-repeat: repeat;
+  opacity: 0.50;            /* 👉 AQUÍ pones la opacidad del fondo */
+  z-index: -1;             /* Se coloca detrás del contenido */
+}
+
+h1 {
+  color: rgb(255, 255, 255);
+  font-size: 50px;
+}
+
+.Subtema {
+  color: rgb(53, 50, 50);
+  font-size: 30px;
 }
