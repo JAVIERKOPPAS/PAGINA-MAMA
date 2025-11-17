@@ -9,9 +9,9 @@ h1 {
   background-color: red;
 }
 
-.logo {
+.contenedor-logo {
   width: 150px;
   height: auto;
   margin-top: 20px;
-  position: ;
+  background-repeat: repeat; 
 }
