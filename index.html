@@ -6,17 +6,29 @@
     <title>Mi App</title>
     <!--Conexiones-->
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="manifest.json">
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
-    <div>
+
     <h1>AROMIA</h1>
-    </div>
-    <div class="Subtema">
-    <h2>Calculadora de costos.</h2>
+    <h2 class="Subtema">Calculadora de costos.</h2>
+
+    <!-- FORMULARIO -->
+    <div class="formulario">
+
+        <input type="number" id="costo_cerakilo" placeholder="Costo del kilo de cera">
+        <input type="number" id="costo_esencia" placeholder="Costo de la esencia">
+        <input type="number" id="costo_recipiente" placeholder="Costo del recipiente">
+        <input type="number" id="costo_conservador" placeholder="Costo del conservador">
+        <input type="number" id="costos_extras" placeholder="Costos extra">
+        <input type="number" id="gr_cera" placeholder="Gramos de cera utilizados">
+
+        <button onclick="calcular()">Calcular</button>
+        <button onclick="limpiar()">Limpiar</button>
+
+        <div id="resultado"></div>
     </div>
 
     <script src="app.js"></script>
-    
 </body>
 </html>
