@@ -3,31 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi App</title>
-    <!--Conexiones-->
+    <meta name="theme-color" content="#f6efe6">
+    <title>Aromia · Calculadora de costos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon.png">
 </head>
 <body>
 
-    <h1>AROMIA</h1>
-    <h2 class="Subtema">Calculadora de costos.</h2>
+    <main class="contenedor">
+        <header class="cabecera">
+            <img src="IMAGENES/logo-header.png" alt="Aromia" class="logo">
+            <p class="subtitulo">Calculadora de costos de velas</p>
+        </header>
 
-    <!-- FORMULARIO -->
-    <div class="formulario">
+        <form class="tarjeta" id="formulario" onsubmit="calcular(event)">
+            <h2 class="tarjeta-titulo">Materiales</h2>
 
-        <input type="number" id="costo_cerakilo" placeholder="Costo del kilo de cera">
-        <input type="number" id="costo_esencia" placeholder="Costo de la esencia">
-        <input type="number" id="costo_recipiente" placeholder="Costo del recipiente">
-        <input type="number" id="costo_conservador" placeholder="Costo del conservador">
-        <input type="number" id="costos_extras" placeholder="Costos extra">
-        <input type="number" id="gr_cera" placeholder="Gramos de cera utilizados">
+            <div class="campos">
+                <label class="campo">
+                    <span class="etiqueta">Kilo de cera</span>
+                    <span class="entrada"><span class="prefijo">$</span>
+                        <input type="number" id="costo_cerakilo" inputmode="decimal" step="any" min="0" placeholder="0.00">
+                    </span>
+                </label>
 
-        <button onclick="calcular()">Calcular</button>
-        <button onclick="limpiar()">Limpiar</button>
+                <label class="campo">
+                    <span class="etiqueta">Esencia</span>
+                    <span class="entrada"><span class="prefijo">$</span>
+                        <input type="number" id="costo_esencia" inputmode="decimal" step="any" min="0" placeholder="0.00">
+                    </span>
+                </label>
 
-        <div id="resultado"></div>
-    </div>
+                <label class="campo">
+                    <span class="etiqueta">Recipiente</span>
+                    <span class="entrada"><span class="prefijo">$</span>
+                        <input type="number" id="costo_recipiente" inputmode="decimal" step="any" min="0" placeholder="0.00">
+                    </span>
+                </label>
+
+                <label class="campo">
+                    <span class="etiqueta">Conservador</span>
+                    <span class="entrada"><span class="prefijo">$</span>
+                        <input type="number" id="costo_conservador" inputmode="decimal" step="any" min="0" placeholder="0.00">
+                    </span>
+                </label>
+
+                <label class="campo">
+                    <span class="etiqueta">Costos extra</span>
+                    <span class="entrada"><span class="prefijo">$</span>
+                        <input type="number" id="costos_extras" inputmode="decimal" step="any" min="0" placeholder="0.00">
+                    </span>
+                </label>
+
+                <label class="campo">
+                    <span class="etiqueta">Cera utilizada</span>
+                    <span class="entrada">
+                        <input type="number" id="gr_cera" inputmode="decimal" step="any" min="0" max="1000" placeholder="0">
+                        <span class="sufijo">g</span>
+                    </span>
+                </label>
+            </div>
+
+            <p class="aviso" id="aviso" role="alert"></p>
+
+            <div class="botones">
+                <button type="submit" class="boton boton-principal">Calcular</button>
+                <button type="button" class="boton boton-secundario" onclick="limpiar()">Limpiar</button>
+            </div>
+        </form>
+
+        <section class="tarjeta resultado" id="resultado" hidden aria-live="polite">
+            <h2 class="tarjeta-titulo">Resultado</h2>
+
+            <div class="total">
+                <span class="total-etiqueta">Costo total por vela</span>
+                <span class="total-valor" id="r_total"></span>
+            </div>
+
+            <div class="barra-cera">
+                <div class="barra-texto">
+                    <span>Cera usada: <strong id="r_porcentaje"></strong> del kilo</span>
+                    <span>Te quedan <strong id="r_restante"></strong></span>
+                </div>
+                <div class="barra"><div class="barra-relleno" id="r_barra"></div></div>
+            </div>
+
+            <dl class="lista">
+                <div><dt>Esencia necesaria</dt><dd id="r_esencia_ml"></dd></div>
+                <div><dt>Conservador utilizado</dt><dd id="r_conservador_g"></dd></div>
+            </dl>
+
+            <h3 class="desglose-titulo">Desglose</h3>
+            <dl class="lista">
+                <div><dt>Cera</dt><dd id="r_gasto_cera"></dd></div>
+                <div><dt>Esencia</dt><dd id="r_gasto_esencia"></dd></div>
+                <div><dt>Conservador</dt><dd id="r_gasto_conservador"></dd></div>
+                <div><dt>Recipiente</dt><dd id="r_recipiente"></dd></div>
+                <div><dt>Costos extra</dt><dd id="r_extras"></dd></div>
+                <div><dt>Cargo fijo</dt><dd id="r_fijo"></dd></div>
+            </dl>
+        </section>
+
+        <footer class="pie">Hecho con cariño · Aromia</footer>
+    </main>
 
     <script src="app.js"></script>
 </body>

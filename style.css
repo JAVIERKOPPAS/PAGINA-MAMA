@@ -1,68 +1,260 @@
+:root {
+  --fondo: #f6efe6;
+  --tarjeta: #fffdf9;
+  --texto: #3b3431;
+  --texto-suave: #8a7d74;
+  --acento: #b8865b;
+  --acento-oscuro: #9a6c44;
+  --acento-claro: #f1e2cf;
+  --borde: #eadfd2;
+  --sombra: 0 10px 30px rgba(120, 90, 60, 0.10), 0 2px 6px rgba(120, 90, 60, 0.06);
+  --radio: 18px;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; background-color: #f6efe6; }
+
 body {
-  font-family: sans-serif;
-  text-align: center;
-  padding: 20px;
-  background-color: rgb(223, 175, 116);
+  margin: 0;
   min-height: 100vh;
-  position: relative;
+  font-family: "Nunito Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--texto);
+  background-color: var(--fondo);
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(232, 196, 150, 0.45), transparent 45%),
+    radial-gradient(circle at 100% 100%, rgba(214, 178, 140, 0.35), transparent 50%);
+}
+
+.contenedor {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 28px 16px 40px;
+}
+
+/* CABECERA */
+.cabecera { text-align: center; margin-bottom: 22px; }
+
+.logo {
+  width: min(260px, 70%);
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.subtitulo {
+  margin: 6px 0 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--texto-suave);
+}
+
+/* TARJETAS */
+.tarjeta {
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 22px 20px;
+  margin-bottom: 18px;
+}
+
+.tarjeta-titulo {
+  margin: 0 0 16px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--texto);
+}
+
+/* CAMPOS */
+.campos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.campo { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+
+.etiqueta {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+
+.entrada {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1.5px solid var(--borde);
+  border-radius: 12px;
+  padding: 0 12px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.entrada:focus-within {
+  border-color: var(--acento);
+  box-shadow: 0 0 0 4px rgba(184, 134, 91, 0.15);
+}
+
+.prefijo, .sufijo {
+  color: var(--texto-suave);
+  font-weight: 600;
+}
+
+.entrada input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 12px 6px;
+  font: inherit;
+  font-size: 17px;
+  color: var(--texto);
+}
+
+.entrada input::placeholder { color: #c9bcb0; }
+
+.aviso {
+  min-height: 0;
+  margin: 12px 0 0;
+  color: #b4513d;
+  font-size: 14px;
+}
+.aviso:empty { display: none; }
+
+/* BOTONES */
+.botones {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.boton {
+  flex: 1;
+  padding: 14px 18px;
+  border-radius: 12px;
+  font: inherit;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+.boton:active { transform: scale(0.98); }
+
+.boton-principal {
+  flex: 2;
+  border: none;
+  background: var(--acento);
+  color: #fff;
+}
+.boton-principal:hover { background: var(--acento-oscuro); }
+
+.boton-secundario {
+  border: 1.5px solid var(--borde);
+  background: transparent;
+  color: var(--texto-suave);
+}
+.boton-secundario:hover { background: var(--acento-claro); }
+
+/* RESULTADO */
+.resultado { animation: aparecer 0.3s ease-out; }
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+.total {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 18px;
+  border-radius: 14px;
+  background: var(--acento-claro);
+  margin-bottom: 18px;
+}
+
+.total-etiqueta {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--acento-oscuro);
+}
+
+.total-valor {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 46px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--texto);
+}
+
+.barra-cera { margin-bottom: 14px; }
+
+.barra-texto {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  font-size: 14px;
+  color: var(--texto-suave);
+  margin-bottom: 8px;
+}
+.barra-texto strong { color: var(--texto); }
+
+.barra {
+  height: 10px;
+  border-radius: 99px;
+  background: var(--borde);
   overflow: hidden;
 }
 
-/* Fondo con opacidad SIN afectar el texto */
-body::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+.barra-relleno {
   height: 100%;
-  background-image: url("IMAGENES/logocolor.png");
-  background-size: 400px;
-  background-repeat: repeat;
-  opacity: 0.50;
-  z-index: -1;
+  width: 0;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #d9a877, var(--acento));
+  transition: width 0.5s ease-out;
 }
 
-h1 {
-  color: rgb(255, 255, 255);
-  font-size: 50px;
+.desglose-titulo {
+  margin: 18px 0 4px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--texto-suave);
 }
 
-.Subtema {
-  color: rgb(53, 50, 50);
-  font-size: 30px;
+.lista { margin: 0; }
+
+.lista > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--borde);
+}
+.lista > div:last-child { border-bottom: none; }
+
+.lista dt { color: var(--texto-suave); }
+.lista dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+.pie {
+  text-align: center;
+  font-size: 13px;
+  color: var(--texto-suave);
+  margin-top: 10px;
 }
 
-/* FORMULARIO */
-.formulario {
-  margin-top: 30px;
-}
-
-input {
-  padding: 12px;
-  width: 80%;
-  max-width: 300px;
-  margin: 8px;
-  border-radius: 10px;
-  border: none;
-  font-size: 16px;
-}
-
-button {
-  padding: 12px 20px;
-  margin-top: 15px;
-  border: none;
-  background: rgb(255,255,255);
-  color: black;
-  border-radius: 10px;
-  font-size: 18px;
-  cursor: pointer;
-}
-
-#resultado {
-  margin-top: 25px;
-  font-size: 30px;
-  font-weight: bold;
-  white-space: pre-line;
-  color: #2c2c2c;
+@media (max-width: 380px) {
+  .campos { grid-template-columns: 1fr; }
 }
