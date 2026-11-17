@@ -6,7 +6,7 @@ if ("serviceWorker" in navigator) {
 }
 
 const CAMPOS = ["costo_cerakilo", "costo_esencia", "costo_recipiente", "costo_conservador", "costos_extras", "gr_cera"];
-const CARGO_FIJO = 5;
+const CARGO_FIJO = 5; // costo de la mecha
 
 const pesos = new Intl.NumberFormat("es-MX", { style: "currency", currency: "MXN" });
 
